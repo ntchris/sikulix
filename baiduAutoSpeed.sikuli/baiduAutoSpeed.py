@@ -75,6 +75,7 @@ def wait_and_click_this_button_or_that():
       if (i>5000):
          i=0
       i=i+1
+      print 'sleeping for 60 seconds and retry'
       time.sleep(RetryTimer)
 
       
