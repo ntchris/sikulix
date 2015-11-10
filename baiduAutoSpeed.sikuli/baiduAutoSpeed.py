@@ -28,14 +28,22 @@ def wait_and_click_try_highspeed_button( ):
       time.sleep(60)
       i=i+1
 
+
+
+
+
+
+
+
+
       
 def wait_and_click_this_button_or_that():
    i =0
-   RetryTimer = 6 #*10
-   SuccessWaitTimer = 5#30*60
+   RetryTimer = 60 #*10
+   SuccessWaitTimer = 25*60
    
    while True:
-      if(i%2==0):   
+      if(i%5==0):   
          try:   
             click("transferButton.png")
             print 'Clicked! transfer button'
@@ -44,52 +52,41 @@ def wait_and_click_this_button_or_that():
             print 'transfer button not found '+ str(i)
             time.sleep(2)
 
-      try:
-         time.sleep(5) 
-         wait("1447172037894.png")
-         print 'Prog wait and have it !!!!'
-         
+      try:        
          click("highSpeedButton.png")  
-         print 'Clicked! High Speed button! Entering deep sleep!!!!!!!!!'
-         
-         time.sleep(SuccessWaitTimer)
+         print 'Clicked! High Speed button!'
+     
       except:
          print 'High Speed button not found '+ str(i)
-         time.sleep(RetryTimer)
       
+      
+      time.sleep(2)
+
+      
+      # if you see "success button then just deep sleep!
       try:
+        wait("successButton.png")
        
-        print 'Doc wait and have it !!!!'
-          
+        print 'Already FAST SPEED! Deep sleep'       
         time.sleep(SuccessWaitTimer)
          
       except:
          print 'Success button not found?'          
-
+      if (i>5000):
+         i=0
       i=i+1
+      time.sleep(RetryTimer)
 
-
-
-def main():
-   print 'sleeping 80'
-   time.sleep(80)
-   print 'sleeping 80 done!!!'  
-
-   while True:
-      try :
-         wait("1447174054868.png")
-         print 'doc is found'
-      except : 
-         print 'doc not found?'          
       
-      time.sleep(5)     
+def main():
+     
       
 
 # switchApp(u"欢迎使用百度云管家")
    #openApp(u"欢迎使用百度云管家")
    #wait_and_click_transferButton()
    #wait_and_click_try_highspeed_button()
-   #wait_and_click_this_button_or_that()
+   wait_and_click_this_button_or_that()
 
 main()
 
