@@ -6,12 +6,12 @@ def wait_and_click_transferButton( ):
    print 'waiting for transfer list button'
    for i in range(20):
       try:  
-         click("1447114728089.png")
+         click("transferButton.png")
          # not found is not a problem, if found, click and stop while loop.
          break
       except:  
          print 'transfer button not found, continue waiting ' + str(i)
-      time.sleep(10)
+      time.sleep(3)
 
 
 def wait_and_click_try_highspeed_button( ):
@@ -20,7 +20,7 @@ def wait_and_click_try_highspeed_button( ):
    i=0
    while True:  
       try:  
-         click("1447114871257.png")     
+         click("highSpeedButton.png")       
          print 'Clicked! High Speed button'
          # not found is not a problem, if found, click and stop while loop.
       except:  
@@ -31,33 +31,65 @@ def wait_and_click_try_highspeed_button( ):
       
 def wait_and_click_this_button_or_that():
    i =0
+   RetryTimer = 6 #*10
+   SuccessWaitTimer = 5#30*60
+   
    while True:
       if(i%2==0):   
-         try:  
+         try:   
             click("transferButton.png")
             print 'Clicked! transfer button'
             time.sleep(2)
          except:
-            print 'transfer button not found, but OK, keep waiting '+ str(i)
-            time.sleep(12)
+            print 'transfer button not found '+ str(i)
+            time.sleep(2)
 
-      try:  
+      try:
+         time.sleep(5) 
+         wait("1447172037894.png")
+         print 'Prog wait and have it !!!!'
+         
          click("highSpeedButton.png")  
-         print 'Clicked! High Speed button'
-         time.sleep(5*60 )
+         print 'Clicked! High Speed button! Entering deep sleep!!!!!!!!!'
+         
+         time.sleep(SuccessWaitTimer)
       except:
-         print 'High Speed button not found, but OK, keep waiting '+ str(i)
-         i=i+1
-         time.sleep(120)
+         print 'High Speed button not found '+ str(i)
+         time.sleep(RetryTimer)
+      
+      try:
+       
+        print 'Doc wait and have it !!!!'
+          
+        time.sleep(SuccessWaitTimer)
+         
+      except:
+         print 'Success button not found?'          
+
+      i=i+1
+
 
 
 def main():
+   print 'sleeping 80'
+   time.sleep(80)
+   print 'sleeping 80 done!!!'  
 
-   # switchApp(u"欢迎使用百度云管家")
+   while True:
+      try :
+         wait("1447174054868.png")
+         print 'doc is found'
+      except : 
+         print 'doc not found?'          
+      
+      time.sleep(5)     
+      
+
+# switchApp(u"欢迎使用百度云管家")
    #openApp(u"欢迎使用百度云管家")
    #wait_and_click_transferButton()
    #wait_and_click_try_highspeed_button()
-   wait_and_click_this_button_or_that()
+   #wait_and_click_this_button_or_that()
 
 main()
 

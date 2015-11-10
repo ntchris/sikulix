@@ -76,34 +76,92 @@
 
 <span class="kw">def</span> wait_and_click_transferButton( ):
    <span class="kw">print</span> <span class="str">'waiting for transfer list button'</span>
-   <span class="kw">while</span> True:
-      time.<span class="skw">sleep</span>(<span class="dig">20</span>)
+   <span class="kw">for</span> i <span class="kw">in</span> range(<span class="dig">20</span>):
       <span class="kw">try</span>:
-         <span class="skw">click</span>(<img src="1447114728089.png" />)
+         <span class="skw">click</span>(<img src="transferButton.png" />)
          <span class="cmt"># not found is not a problem, if found, click and stop while loop.</span>
          <span class="kw">break</span>
       <span class="kw">except</span>:
-         <span class="kw">print</span> <span class="str">'transfer button not found, continue waiting '</span>
+         <span class="kw">print</span> <span class="str">'transfer button not found, continue waiting '</span> + str(i)
+      time.<span class="skw">sleep</span>(<span class="dig">3</span>)
 
 
 <span class="kw">def</span> wait_and_click_try_highspeed_button( ):
    <span class="kw">print</span> <span class="str">'waiting for try high speed button'</span>
+
+   i=<span class="dig">0</span>
    <span class="kw">while</span> True:
       <span class="kw">try</span>:
-         <span class="skw">click</span>(<img src="1447114871257.png" />)
+         <span class="skw">click</span>(<img src="highSpeedButton.png" />)
          <span class="kw">print</span> <span class="str">'Clicked! High Speed button'</span>
          <span class="cmt"># not found is not a problem, if found, click and stop while loop.</span>
       <span class="kw">except</span>:
-         <span class="kw">print</span> <span class="str">'high speed button not found, continue waiting '</span>
+         <span class="kw">print</span> <span class="str">'high speed button not found, continue waiting '</span>+ str(i)
       time.<span class="skw">sleep</span>(<span class="dig">60</span>)
+      i=i+<span class="dig">1</span>
+
+
+<span class="kw">def</span> wait_and_click_this_button_or_that():
+   i =<span class="dig">0</span>
+   RetryTimer = <span class="dig">6</span> <span class="cmt">#*10</span>
+   SuccessWaitTimer = <span class="dig">5</span><span class="cmt">#30*60</span>
+
+   <span class="kw">while</span> True:
+      <span class="kw">if</span>(i%<span class="dig">2</span>==<span class="dig">0</span>):
+         <span class="kw">try</span>:
+            <span class="skw">click</span>(<img src="transferButton.png" />)
+            <span class="kw">print</span> <span class="str">'Clicked! transfer button'</span>
+            time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+         <span class="kw">except</span>:
+            <span class="kw">print</span> <span class="str">'transfer button not found '</span>+ str(i)
+            time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+
+      <span class="kw">try</span>:
+         time.<span class="skw">sleep</span>(<span class="dig">5</span>)
+         <span class="skw">wait</span>(<img src="1447172037894.png" />)
+         <span class="kw">print</span> <span class="str">'Prog wait and have it !!!!'</span>
+
+         <span class="skw">click</span>(<img src="highSpeedButton.png" />)
+         <span class="kw">print</span> <span class="str">'Clicked! High Speed button! Entering deep sleep!!!!!!!!!'</span>
+
+         time.<span class="skw">sleep</span>(SuccessWaitTimer)
+      <span class="kw">except</span>:
+         <span class="kw">print</span> <span class="str">'High Speed button not found '</span>+ str(i)
+         time.<span class="skw">sleep</span>(RetryTimer)
+
+      <span class="kw">try</span>:
+
+        <span class="kw">print</span> <span class="str">'Doc wait and have it !!!!'</span>
+
+        time.<span class="skw">sleep</span>(SuccessWaitTimer)
+
+      <span class="kw">except</span>:
+         <span class="kw">print</span> <span class="str">'Success button not found?'</span>
+
+      i=i+<span class="dig">1</span>
+
 
 
 <span class="kw">def</span> main():
+   <span class="kw">print</span> <span class="str">'sleeping 80'</span>
+   time.<span class="skw">sleep</span>(<span class="dig">80</span>)
+   <span class="kw">print</span> <span class="str">'sleeping 80 done!!!'</span>
 
-   switchApp(<span class="str">u"欢迎使用百度云管家"</span>)
+   <span class="kw">while</span> True:
+      <span class="kw">try</span> :
+         <span class="skw">wait</span>(<img src="1447174054868.png" />)
+         <span class="kw">print</span> <span class="str">'doc is found'</span>
+      <span class="kw">except</span> :
+         <span class="kw">print</span> <span class="str">'doc not found?'</span>
+
+      time.<span class="skw">sleep</span>(<span class="dig">5</span>)
+
+
+<span class="cmt"># switchApp(u"欢迎使用百度云管家")</span>
+   <span class="cmt">#openApp(u"欢迎使用百度云管家")</span>
    <span class="cmt">#wait_and_click_transferButton()</span>
    <span class="cmt">#wait_and_click_try_highspeed_button()</span>
-
+   <span class="cmt">#wait_and_click_this_button_or_that()</span>
 
 main()
 </pre>
