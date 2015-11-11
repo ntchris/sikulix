@@ -1,8 +1,14 @@
 # coding=utf-8
 from threading import Thread
 
-RetryTimer = 4 #*10
-SuccessWaitTimer = 5#25*6
+RetryTimer = 1*30
+SuccessWaitTimer = 25*60
+
+waitingForTwoAmTimer = 10
+
+GOODHOUR = 2
+GOODMIN = 0
+
 
    
 def tryToClickTransferButton():
@@ -26,60 +32,36 @@ def tryToClickTryHighSpeedButton():
 def deepSleepIfSuccess():
    try:
      wait("successButton.png")
-     print 'Already FAST SPEED! Deep sleep'       
+     print 'Already FAST SPEED! Deep sleep ' + str(SuccessWaitTimer)+' seconds'
      time.sleep(SuccessWaitTimer)  # deep sleep if success    
    except:
      print 'Success button not found?'          
    time.sleep(2)
     
 
+def isGoodDownloadTime():
+    
+   isgood = False
+   timestruct = time.localtime()
       
-def wait_and_click_this_button_or_that():
-   i =0
+   print timestruct
+   print timestruct.tm_hour
+   print timestruct.tm_min
 
-   while True:
-      if(i%5==0):   
-         try:   
-            click("transferButton.png")
-            print 'Clicked! transfer button'
-            time.sleep(2)
-         except:
-            print 'transfer button not found '+ str(i)
-            time.sleep(2)
-
-      try:        
-         click("highSpeedButton.png")  
-         print 'Clicked! High Speed button!'
-     
-      except:
-         print 'High Speed button not found '+ str(i)
-      
-      
-      time.sleep(2)
-
-      
-      # if you see "success button then just deep sleep!
-      try:
-        wait("successButton.png")
-       
-        print 'Already FAST SPEED! Deep sleep'       
-        time.sleep(SuccessWaitTimer)
-         
-      except:
-         print 'Success button not found?'          
-      if (i>5000):
-         i=0
-      i=i+1
-      print 'sleeping for 60 seconds and retry'
-      time.sleep(RetryTimer)
-
+   if (timestruct.tm_hour == Constant.HOUR and timestruct.tm_min<=Constant.MIN):
+      print 'good time'
+   else:
+      print 'no good time'
+   return False
 
 
 def automationBaiduCloudSpeed():
    i =0
     
+   
    while True:
-      if(i%5==0):   
+
+      if(i%3==0):   
          tryToClickTransferButton()
          
       tryToClickTryHighSpeedButton()
@@ -90,7 +72,7 @@ def automationBaiduCloudSpeed():
       if (i>5000):
          i=0
       i=i+1
-      print 'sleeping for 60 seconds and retry '+ str(i)
+      print 'sleeping for ' +  str(RetryTimer) +' seconds and retry '+ str(i)
       time.sleep(RetryTimer)
 
 
@@ -99,7 +81,8 @@ def automationBaiduCloudSpeed():
 
 def main():
      
-   
+
+      
    automationBaiduCloudSpeed()
     
          
