@@ -1,0 +1,1 @@
+D:\GreenSoft\sikulix\runsikulix.cmd -r  d:\GitHubRoot\sikulix\baiduAutoSpeed.sikuli
