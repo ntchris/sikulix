@@ -54,6 +54,7 @@ def isGoodDownloadTime():
       print 'no good time'
    return False
 
+click("1447335357440.png")
 
 def automationBaiduCloudSpeed():
    i =0
