@@ -1,8 +1,12 @@
 # coding=utf-8
 from threading import Thread
+import time
+import sys
 
 RetryTimer = 1*30
 SuccessWaitTimer = 25*60
+waitForHalfHours = 1800
+waitForOneHours = 3600
 
 waitingForTwoAmTimer = 10
 
@@ -12,7 +16,9 @@ GOODMIN = 0
 
    
 def tryToClickTransferButton():
-   try:   
+   try:  
+      hover("transferButton.png")
+      time.sleep(10)
       click("transferButton.png")
       print 'Clicked! transfer button'
 
@@ -21,7 +27,9 @@ def tryToClickTransferButton():
    time.sleep(2)
 
 def tryToClickTryHighSpeedButton():
-   try:        
+   try:
+      hover("highSpeedButton.png")  
+      time.sleep(10)
       click("highSpeedButton.png")  
       print 'Clicked! High Speed button!'
      
@@ -38,7 +46,16 @@ def deepSleepIfSuccess():
      print 'Success button not found?'          
    time.sleep(2)
     
-
+def tryToClickDownloadingTab():
+   try:
+      hover("downloadingTab.png")
+      time.sleep(6)
+      click("downloadingTab.png")
+      print 'Clicked Downloading Tab'
+   except:
+     print 'Downloading tab not found?'   
+   time.sleep(2)
+      
 def isGoodDownloadTime():
     
    isgood = False
@@ -54,7 +71,9 @@ def isGoodDownloadTime():
       print 'no good time'
    return False
 
-click("1447335357440.png")
+#click("1447335357440.png")
+
+
 
 def automationBaiduCloudSpeed():
    i =0
@@ -62,9 +81,11 @@ def automationBaiduCloudSpeed():
    
    while True:
 
-      if(i%3==0):   
-         tryToClickTransferButton()
-         
+        
+      tryToClickTransferButton()
+
+      tryToClickDownloadingTab()
+
       tryToClickTryHighSpeedButton()
 
       # if you see "success button then just deep sleep!
@@ -81,9 +102,17 @@ def automationBaiduCloudSpeed():
 
 
 def main():
-     
-
-      
+   while True:  
+     timestruct = time.localtime()
+     print timestruct
+     if (timestruct.tm_hour== 23):
+       print 'sleeping for one hour, long long time'
+       time.sleep( waitForOneHours )  
+     elif (timestruct.tm_hour== 0):
+       print 'sleeping for half hour long long time'
+       time.sleep( waitForHalfHours )  
+     else:
+       break
    automationBaiduCloudSpeed()
     
          

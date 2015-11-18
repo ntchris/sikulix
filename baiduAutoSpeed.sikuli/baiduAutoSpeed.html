@@ -72,9 +72,13 @@
 <pre class="sikuli-code">
 <span class="cmt"># coding=utf-8</span>
 <span class="kw">from</span> threading <span class="kw">import</span> Thread
+<span class="kw">import</span> time
+<span class="kw">import</span> sys
 
 RetryTimer = <span class="dig">1</span>*<span class="dig">30</span>
 SuccessWaitTimer = <span class="dig">25</span>*<span class="dig">60</span>
+waitForHalfHours = <span class="dig">1800</span>
+waitForOneHours = <span class="dig">3600</span>
 
 waitingForTwoAmTimer = <span class="dig">10</span>
 
@@ -85,6 +89,8 @@ GOODMIN = <span class="dig">0</span>
 
 <span class="kw">def</span> tryToClickTransferButton():
    <span class="kw">try</span>:
+      hover(<img src="transferButton.png" />)
+      time.<span class="skw">sleep</span>(<span class="dig">10</span>)
       <span class="skw">click</span>(<img src="transferButton.png" />)
       <span class="kw">print</span> <span class="str">'Clicked! transfer button'</span>
 
@@ -94,6 +100,8 @@ GOODMIN = <span class="dig">0</span>
 
 <span class="kw">def</span> tryToClickTryHighSpeedButton():
    <span class="kw">try</span>:
+      hover(<img src="highSpeedButton.png" />)
+      time.<span class="skw">sleep</span>(<span class="dig">10</span>)
       <span class="skw">click</span>(<img src="highSpeedButton.png" />)
       <span class="kw">print</span> <span class="str">'Clicked! High Speed button!'</span>
 
@@ -110,6 +118,15 @@ GOODMIN = <span class="dig">0</span>
      <span class="kw">print</span> <span class="str">'Success button not found?'</span>
    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
 
+<span class="kw">def</span> tryToClickDownloadingTab():
+   <span class="kw">try</span>:
+      hover(<img src="downloadingTab.png" />)
+      time.<span class="skw">sleep</span>(<span class="dig">6</span>)
+      <span class="skw">click</span>(<img src="downloadingTab.png" />)
+      <span class="kw">print</span> <span class="str">'Clicked Downloading Tab'</span>
+   <span class="kw">except</span>:
+     <span class="kw">print</span> <span class="str">'Downloading tab not found?'</span>
+   time.<span class="skw">sleep</span>(<span class="dig">2</span>)
 
 <span class="kw">def</span> isGoodDownloadTime():
 
@@ -126,7 +143,9 @@ GOODMIN = <span class="dig">0</span>
       <span class="kw">print</span> <span class="str">'no good time'</span>
    <span class="kw">return</span> False
 
-<span class="skw">click</span>(<img src="1447335357440.png" />)
+<span class="cmt">#click("1447335357440.png")</span>
+
+
 
 <span class="kw">def</span> automationBaiduCloudSpeed():
    i =<span class="dig">0</span>
@@ -134,8 +153,10 @@ GOODMIN = <span class="dig">0</span>
 
    <span class="kw">while</span> True:
 
-      <span class="kw">if</span>(i%<span class="dig">3</span>==<span class="dig">0</span>):
-         tryToClickTransferButton()
+
+      tryToClickTransferButton()
+
+      tryToClickDownloadingTab()
 
       tryToClickTryHighSpeedButton()
 
@@ -153,9 +174,17 @@ GOODMIN = <span class="dig">0</span>
 
 
 <span class="kw">def</span> main():
-
-
-
+   <span class="kw">while</span> True:
+     timestruct = time.localtime()
+     <span class="kw">print</span> timestruct
+     <span class="kw">if</span> (timestruct.tm_hour== <span class="dig">23</span>):
+       <span class="kw">print</span> <span class="str">'sleeping for one hour, long long time'</span>
+       time.<span class="skw">sleep</span>( waitForOneHours )
+     <span class="kw">elif</span> (timestruct.tm_hour== <span class="dig">0</span>):
+       <span class="kw">print</span> <span class="str">'sleeping for half hour long long time'</span>
+       time.<span class="skw">sleep</span>( waitForHalfHours )
+     <span class="kw">else</span>:
+       <span class="kw">break</span>
    automationBaiduCloudSpeed()
 
 
