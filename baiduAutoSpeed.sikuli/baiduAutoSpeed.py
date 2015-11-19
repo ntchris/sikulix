@@ -3,6 +3,7 @@ from threading import Thread
 import time
 import sys
 
+ShortWaitTime  =10
 RetryTimer = 1*30
 SuccessWaitTimer = 25*60
 waitForHalfHours = 1800
@@ -24,18 +25,18 @@ def tryToClickTransferButton():
 
    except:
       print 'transfer button not found '
-   time.sleep(2)
+   time.sleep(ShortWaitTime)
 
 def tryToClickTryHighSpeedButton():
    try:
       hover("highSpeedButton.png")  
-      time.sleep(10)
+      time.sleep(ShortWaitTime)
       click("highSpeedButton.png")  
       print 'Clicked! High Speed button!'
      
    except:
       print 'High Speed button not found '           
-   time.sleep(2)
+   time.sleep(ShortWaitTime)
 
 def deepSleepIfSuccess():
    try:
@@ -44,17 +45,17 @@ def deepSleepIfSuccess():
      time.sleep(SuccessWaitTimer)  # deep sleep if success    
    except:
      print 'Success button not found?'          
-   time.sleep(2)
+   time.sleep(ShortWaitTime)
     
 def tryToClickDownloadingTab():
    try:
       hover("downloadingTab.png")
-      time.sleep(6)
+      time.sleep(ShortWaitTime)
       click("downloadingTab.png")
       print 'Clicked Downloading Tab'
    except:
      print 'Downloading tab not found?'   
-   time.sleep(2)
+   time.sleep(ShortWaitTime)
       
 def isGoodDownloadTime():
     

@@ -75,6 +75,7 @@
 <span class="kw">import</span> time
 <span class="kw">import</span> sys
 
+ShortWaitTime  =<span class="dig">10</span>
 RetryTimer = <span class="dig">1</span>*<span class="dig">30</span>
 SuccessWaitTimer = <span class="dig">25</span>*<span class="dig">60</span>
 waitForHalfHours = <span class="dig">1800</span>
@@ -96,18 +97,18 @@ GOODMIN = <span class="dig">0</span>
 
    <span class="kw">except</span>:
       <span class="kw">print</span> <span class="str">'transfer button not found '</span>
-   time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+   time.<span class="skw">sleep</span>(ShortWaitTime)
 
 <span class="kw">def</span> tryToClickTryHighSpeedButton():
    <span class="kw">try</span>:
       hover(<img src="highSpeedButton.png" />)
-      time.<span class="skw">sleep</span>(<span class="dig">10</span>)
+      time.<span class="skw">sleep</span>(ShortWaitTime)
       <span class="skw">click</span>(<img src="highSpeedButton.png" />)
       <span class="kw">print</span> <span class="str">'Clicked! High Speed button!'</span>
 
    <span class="kw">except</span>:
       <span class="kw">print</span> <span class="str">'High Speed button not found '</span>
-   time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+   time.<span class="skw">sleep</span>(ShortWaitTime)
 
 <span class="kw">def</span> deepSleepIfSuccess():
    <span class="kw">try</span>:
@@ -116,17 +117,17 @@ GOODMIN = <span class="dig">0</span>
      time.<span class="skw">sleep</span>(SuccessWaitTimer)  <span class="cmt"># deep sleep if success    </span>
    <span class="kw">except</span>:
      <span class="kw">print</span> <span class="str">'Success button not found?'</span>
-   time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+   time.<span class="skw">sleep</span>(ShortWaitTime)
 
 <span class="kw">def</span> tryToClickDownloadingTab():
    <span class="kw">try</span>:
       hover(<img src="downloadingTab.png" />)
-      time.<span class="skw">sleep</span>(<span class="dig">6</span>)
+      time.<span class="skw">sleep</span>(ShortWaitTime)
       <span class="skw">click</span>(<img src="downloadingTab.png" />)
       <span class="kw">print</span> <span class="str">'Clicked Downloading Tab'</span>
    <span class="kw">except</span>:
      <span class="kw">print</span> <span class="str">'Downloading tab not found?'</span>
-   time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+   time.<span class="skw">sleep</span>(ShortWaitTime)
 
 <span class="kw">def</span> isGoodDownloadTime():
 
