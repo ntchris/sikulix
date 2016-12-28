@@ -3,12 +3,12 @@ from threading import Thread
 import time
 import sys
 
-ShortWaitTime  =10
+ShortWaitTime  =4
 RetryTimer = 1*30
-SuccessWaitTimer = 25*60
+SuccessWaitTimer = 30
 waitForHalfHours = 1800
 waitForOneHours = 3600
-
+waitForFiveMinutes = 5*60
 waitingForTwoAmTimer = 10
 
 GOODHOUR = 2
